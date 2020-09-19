@@ -29,7 +29,7 @@
 | status       | integer    | null: false       |
 | delivery_fee | integer    | null: false       |
 | area         | integer    | null: false       |
-| day          | integer    | null: false       |
+| day_id       | integer    | null: false       |
 | price        | integer    | null: false       |
 | user         | references | foreign_key: true |
 
@@ -40,16 +40,15 @@
 
 ## addresses テーブル
 
-| Column     | Type       | Options           |
-| ---------- | ---------- | ----------------- |
-| payment    | integer    | null: false       |
-| postcode   | integer    | null: false       |
-| prefecture | integer    | null: false       |
-| city       | string     | null: false       |
-| road       | string     | null: false       |
-| bulding    | string     | null: false       |
-| phone      | integer    | null: false       |
-| purchase   | references | foreign_key: true |
+| Column        | Type       | Options           |
+| ----------    | ---------- | ----------------- |
+| postcode      | string     | null: false       |
+| prefecture_id | integer    | null: false       |
+| city          | string     | null: false       |
+| road          | string     | null: false       |
+| bulding       | string     | null: false       |
+| phone         | string     | null: false       |
+| purchase      | references | foreign_key: true |
 ### Association
 
 - belongs_to :purchase
@@ -63,6 +62,7 @@
 
 ### Association
 
-- has_one    :addrese
+- has_one    :address
 - belongs_to :item
 - belongs_to :user
+
