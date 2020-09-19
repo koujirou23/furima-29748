@@ -21,17 +21,17 @@
 
 ## items テーブル
 
-| Column       | Type       | Options           |
-| ------------ | -------    | ----------------- |
-| name         | string     | null: false       |
-| text         | text       | null: false       |
-| category     | integer    | null: false       |
-| status       | integer    | null: false       |
-| delivery_fee | integer    | null: false       |
-| area         | integer    | null: false       |
-| day_id       | integer    | null: false       |
-| price        | integer    | null: false       |
-| user         | references | foreign_key: true |
+| Column          | Type       | Options           |
+| --------------- | -------    | ----------------- |
+| name            | string     | null: false       |
+| text            | text       | null: false       |
+| category_id     | integer    | null: false       |
+| status_id       | integer    | null: false       |
+| delivery_fee_id | integer    | null: false       |
+| area_id         | integer    | null: false       |
+| day_id          | integer    | null: false       |
+| price           | integer    | null: false       |
+| user            | references | foreign_key: true |
 
 ### Association
 
@@ -46,7 +46,7 @@
 | prefecture_id | integer    | null: false       |
 | city          | string     | null: false       |
 | road          | string     | null: false       |
-| bulding       | string     | null: false       |
+| bulding       | string     |                   |
 | phone         | string     | null: false       |
 | purchase      | references | foreign_key: true |
 ### Association
