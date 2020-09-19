@@ -2,14 +2,14 @@
 
 ## users テーブル
 
-| Column       | Type   | Options     |
-| ------------ | ------ | ----------- |
-| nickname     | string | null: false |
-| email        | string | null: false |
-| password     | string | null: false |
-| name         | string | null: false |
-| name_reading | string | null: false |
-| birthday     | string | null: false |
+| Column       | Type    | Options     |
+| ------------ | ------  | ----------- |
+| nickname     | string  | null: false |
+| email        | string  | null: false |
+| password     | string  | null: false |
+| name         | string  | null: false |
+| name_reading | string  | null: false |
+| birthday     | date    | null: false |
 
 ### Association
 
@@ -36,17 +36,6 @@
 - belongs_to :coments
 - belongs_to :users
 - belongs_to :purchases
-
-## coments テーブル
-
-| Column     | Type       | Options           |
-| ---------- | ---------- | ----------------- |
-| coment     | text       | null: false       |
-| user       | references | foreign_key: true |
-| item       | references | foreign_key: true |
-
-- belongs_to :users
-- belongs_to :items
 
 ## purchases テーブル
 
