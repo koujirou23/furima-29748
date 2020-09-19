@@ -2,25 +2,27 @@
 
 ## users テーブル
 
-| Column       | Type    | Options     |
-| ------------ | ------  | ----------- |
-| nickname     | string  | null: false |
-| email        | string  | null: false |
-| password     | string  | null: false |
-| name         | string  | null: false |
-| name_reading | string  | null: false |
-| birthday     | date    | null: false |
+| Column                | Type    | Options     |
+| --------------------- | ------  | ----------- |
+| nickname              | string  | null: false |
+| email                 | string  | null: false |
+| password              | string  | null: false |
+| password_confirmation | string  | null: false |
+| last_name             | string  | null: false |
+| first_name            | string  | null: false |
+| last_name_reading     | string  | null: false |
+| first_name_reading    | string  | null: false |
+| birthday              | date    | null: false |
 
 ### Association
 
 - has_many :items
-- has_many :coments
+- has_many :purchases
 
 ## items テーブル
 
 | Column       | Type       | Options           |
 | ------------ | -------    | ----------------- |
-| image        | string     | null: false       |
 | name         | string     | null: false       |
 | text         | text       | null: false       |
 | category     | integer    | null: false       |
@@ -33,11 +35,10 @@
 
 ### Association
 
-- belongs_to :coments
 - belongs_to :users
-- belongs_to :purchases
+- has_one    :purchases
 
-## purchases テーブル
+## addresses テーブル
 
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
@@ -48,21 +49,21 @@
 | road       | string     | null: false                    |
 | bulding    | string     | null: false                    |
 | phone      | integer    | null: false                    |
-| user       | references | foreign_key: true              |
-| item       | references | foreign_key: true              |
 
 ### Association
 
-- has_many :items
-- has_one  :addresses
+- has_one  :purchases
 
-## addresses テーブル
+## purchases テーブル
 
 | Column     | Type          | Options                        |
 | ---------- | ------------- | ------------------------------ |
 | user       | references    | foreign_key: true              |
-| purchases  | references    | foreign_key: true              |
+| addresses  | references    | foreign_key: true              |
+| item       | references    | foreign_key: true              |
 
 ### Association
 
-- has_one :purchases
+- has_one    :addreses
+- has_one    :item
+- belongs_to :user
