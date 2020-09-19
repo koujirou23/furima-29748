@@ -29,41 +29,40 @@
 | status       | integer    | null: false       |
 | delivery_fee | integer    | null: false       |
 | area         | integer    | null: false       |
-| days         | integer    | null: false       |
+| day          | integer    | null: false       |
 | price        | integer    | null: false       |
 | user         | references | foreign_key: true |
 
 ### Association
 
-- belongs_to :users
-- has_one    :purchases
+- belongs_to :user
+- has_one    :purchase
 
 ## addresses テーブル
 
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| payment    | integer    | null: false                    |
-| postcode   | integer    | null: false                    |
-| prefecture | integer    | null: false                    |
-| city       | string     | null: false                    |
-| road       | string     | null: false                    |
-| bulding    | string     | null: false                    |
-| phone      | integer    | null: false                    |
-
+| Column     | Type       | Options           |
+| ---------- | ---------- | ----------------- |
+| payment    | integer    | null: false       |
+| postcode   | integer    | null: false       |
+| prefecture | integer    | null: false       |
+| city       | string     | null: false       |
+| road       | string     | null: false       |
+| bulding    | string     | null: false       |
+| phone      | integer    | null: false       |
+| purchase   | references | foreign_key: true |
 ### Association
 
-- has_one  :purchases
+- belongs_to :purchase
 
 ## purchases テーブル
 
-| Column     | Type          | Options                        |
-| ---------- | ------------- | ------------------------------ |
-| user       | references    | foreign_key: true              |
-| addresses  | references    | foreign_key: true              |
-| item       | references    | foreign_key: true              |
+| Column     | Type          | Options           |
+| ---------- | ------------- | ----------------- |
+| user       | references    | foreign_key: true |
+| item       | references    | foreign_key: true |
 
 ### Association
 
-- has_one    :addreses
-- has_one    :item
+- has_one    :addrese
+- belongs_to :item
 - belongs_to :user
