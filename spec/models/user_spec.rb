@@ -22,11 +22,11 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Email can't be blank")
     end
 
-    it "重複したemailが存在する場合登録できないこと" do
+    it '重複したemailが存在する場合登録できないこと' do
       @user.save
       another_user = FactoryBot.build(:user, email: @user.email)
       another_user.valid?
-      expect(another_user.errors.full_messages).to include("Email has already been taken")
+      expect(another_user.errors.full_messages).to include('Email has already been taken')
     end
 
     it 'passwordが空だと保存できないこと' do
@@ -36,14 +36,14 @@ RSpec.describe User, type: :model do
     end
 
     it 'passwordが5文字以下だと保存できないこと' do
-      @user.password = "aa222"
-      @user.password_confirmation = "aa222"
+      @user.password = 'aa222'
+      @user.password_confirmation = 'aa222'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
+      expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
     end
 
     it 'passwordがあってもpassword_confirmationが空だと保存できないこと' do
-      @user.password_confirmation = ""
+      @user.password_confirmation = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
@@ -51,85 +51,85 @@ RSpec.describe User, type: :model do
     it 'passwordが数字のみの場合保存できないこと' do
       @user.password = '111111'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password Include both letters and numbers")
+      expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
     end
 
     it 'passwordが英字のみの場合保存できないこと' do
       @user.password = 'aaaaaa'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password Include both letters and numbers")
+      expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
     end
 
     it 'last_nameが空の場合保存できないこと' do
       @user.last_name = nil
       @user.valid?
-      expect(@user.errors.full_messages).to include("Last name can't be blank", "Last name is invalid. Input full-width characters.")
+      expect(@user.errors.full_messages).to include("Last name can't be blank", 'Last name is invalid. Input full-width characters.')
     end
 
     it 'last_nameが英字の場合保存できないこと' do
-      @user.last_name = "aaaa"
+      @user.last_name = 'aaaa'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Last name is invalid. Input full-width characters.")
+      expect(@user.errors.full_messages).to include('Last name is invalid. Input full-width characters.')
     end
 
     it 'first_nameが空の場合保存できないこと' do
       @user.first_name = nil
       @user.valid?
-      expect(@user.errors.full_messages).to include("First name can't be blank", "First name is invalid. Input full-width characters.")
+      expect(@user.errors.full_messages).to include("First name can't be blank", 'First name is invalid. Input full-width characters.')
     end
 
     it 'first_nameが英字の場合保存できないこと' do
-      @user.first_name = "aaaa"
+      @user.first_name = 'aaaa'
       @user.valid?
-      expect(@user.errors.full_messages).to include("First name is invalid. Input full-width characters.")
+      expect(@user.errors.full_messages).to include('First name is invalid. Input full-width characters.')
     end
 
     it 'last_name_readingが英字の場合保存できないこと' do
-      @user.last_name_reading = "aaaa"
+      @user.last_name_reading = 'aaaa'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Last name reading is invalid. Input full-width katakana characters.")
+      expect(@user.errors.full_messages).to include('Last name reading is invalid. Input full-width katakana characters.')
     end
 
     it 'last_name_readingがひらがなの場合保存できないこと' do
-      @user.last_name_reading = "あああ"
+      @user.last_name_reading = 'あああ'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Last name reading is invalid. Input full-width katakana characters.")
+      expect(@user.errors.full_messages).to include('Last name reading is invalid. Input full-width katakana characters.')
     end
 
     it 'last_name_readingが漢字の場合保存できないこと' do
-      @user.last_name_reading = "田中"
+      @user.last_name_reading = '田中'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Last name reading is invalid. Input full-width katakana characters.")
+      expect(@user.errors.full_messages).to include('Last name reading is invalid. Input full-width katakana characters.')
     end
 
     it 'first_name_readingが英字の場合保存できないこと' do
-      @user.first_name_reading = "aaaa"
+      @user.first_name_reading = 'aaaa'
       @user.valid?
-      expect(@user.errors.full_messages).to include("First name reading is invalid. Input full-width katakana characters.")
+      expect(@user.errors.full_messages).to include('First name reading is invalid. Input full-width katakana characters.')
     end
 
     it 'first_name_readingがひらがなの場合保存できないこと' do
-      @user.first_name_reading = "あああ"
+      @user.first_name_reading = 'あああ'
       @user.valid?
-      expect(@user.errors.full_messages).to include("First name reading is invalid. Input full-width katakana characters.")
+      expect(@user.errors.full_messages).to include('First name reading is invalid. Input full-width katakana characters.')
     end
 
     it 'first_name_readingが漢字の場合保存できないこと' do
-      @user.first_name_reading = "田中"
+      @user.first_name_reading = '田中'
       @user.valid?
-      expect(@user.errors.full_messages).to include("First name reading is invalid. Input full-width katakana characters.")
+      expect(@user.errors.full_messages).to include('First name reading is invalid. Input full-width katakana characters.')
     end
 
     it 'first_name_readingが空の場合保存できないこと' do
       @user.first_name_reading = nil
       @user.valid?
-      expect(@user.errors.full_messages).to include("First name reading can't be blank", "First name reading is invalid. Input full-width katakana characters.")
+      expect(@user.errors.full_messages).to include("First name reading can't be blank", 'First name reading is invalid. Input full-width katakana characters.')
     end
 
     it 'last_name_readingが空の場合保存できないこと' do
       @user.last_name_reading = nil
       @user.valid?
-      expect(@user.errors.full_messages).to include("Last name reading can't be blank", "Last name reading is invalid. Input full-width katakana characters.")
+      expect(@user.errors.full_messages).to include("Last name reading can't be blank", 'Last name reading is invalid. Input full-width katakana characters.')
     end
 
     it 'birthdayが空の場合保存できないこと' do
