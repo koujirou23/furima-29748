@@ -14,4 +14,4 @@ function calc(){
 
 }
 
-window.addEventListener('load', calc)
+window.addEventListener('load', calc);
