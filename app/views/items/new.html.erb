@@ -3,6 +3,7 @@
     <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
 
   </header>
+  <script src="app/javascript/price.js"></script>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
     <%= form_with model: @item, local: true do |f| %>
@@ -90,7 +91,6 @@
     <%# /配送について %>
 
     <%# 販売価格 %>
-    <script src="app/javascript/price.js"></script>
     <div class="sell-price">
       <div class="weight-bold-text question-text">
         <span>販売価格<br>(¥300〜9,999,999)</span>
