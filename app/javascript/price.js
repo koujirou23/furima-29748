@@ -7,8 +7,8 @@ function calc(){
   price.addEventListener('keyup', function(){
     fee = Math.floor( price.value / 10 )
     gains = Math.floor( price.value - fee )
-    priceFee.innerHTML = fee
-    profit.innerHTML = gains
+    priceFee.innerHTML = fee.toLocaleString('ja-JP')
+    profit.innerHTML = gains.toLocaleString('ja-JP')
 
   });
 
