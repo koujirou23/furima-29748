@@ -23,9 +23,6 @@
           クリックしてファイルをアップロード
         </p>
         <%= f.file_field :image, id:"item-image" %>
-        <% if @item.image.attached? %>
-          <%= image_tag @item.image %>
-        <% end %>
       </div>
     </div>
     <%# /出品画像 %>
