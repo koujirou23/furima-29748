@@ -46,7 +46,7 @@
 | area_id       | integer    | null: false       |
 | city          | string     | null: false       |
 | road          | string     | null: false       |
-| bulding       | string     |                   |
+| building      | string     |                   |
 | phone         | string     | null: false       |
 | purchase      | references | foreign_key: true |
 ### Association
