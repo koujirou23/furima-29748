@@ -1,10 +1,10 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   before_action :set_item, only: [:edit, :show, :update, :destroy]
+  before_action :sold_out, only: [:index, :show]
 
   def index
     @items = Item.all.order(id: 'DESC')
-    @purchase = Purchase.all
   end
 
   def new
@@ -55,5 +55,9 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def sold_out
+    @purchase = Purchase.all
   end
 end

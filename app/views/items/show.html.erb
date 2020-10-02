@@ -10,9 +10,13 @@
       <div class='item-img-content'>
           <%= image_tag @item.image, class:"item-box-img" %>
           <%# 商品が売れている場合は、sold outを表示しましょう %>
-          <div class='sold-out'>
-            <%# <span>Sold Out!!</span> %>
-          </div>
+          <% @purchase.each do |purchase|%>
+              <% if purchase.item_id != nil && @item.id == purchase.item_id %>
+                <div class='sold-out'>
+                  <span>Sold Out!!</span> 
+                </div>
+              <% end %>
+          <% end %>
           <%# //商品が売れている場合は、sold outを表示しましょう %>
       </div>
       <div class="item-price-box">
@@ -35,7 +39,11 @@
     <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %>
     <% end %>
     <%# 商品が売れていない場合はこちらを表示しましょう %>
-    <%= link_to '購入画面に進む', item_purchases_path(@item) ,class:"item-red-btn"%>
+    <% @purchase.each do |purchase|%>
+      <% if purchase.item_id == nil && item.id != purchase.item_id %>
+        <%= link_to '購入画面に進む', item_purchases_path(@item) ,class:"item-red-btn"%>
+      <% end %>
+    <% end %>
     <%# //商品が売れていない場合はこちらを表示しましょう %>
 
 
