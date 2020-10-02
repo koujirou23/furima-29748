@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.order(id: 'DESC')
+    @purchase = Purchase.all
   end
 
   def new

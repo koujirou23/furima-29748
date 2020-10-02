@@ -1,7 +1,7 @@
 class UserPurchase
   
   include ActiveModel::Model
-  attr_accessor :postcode, :area_id, :city, :road, :buildping, :phone, :token, :user_id, :item_id
+  attr_accessor :postcode, :area_id, :city, :road, :building, :phone, :token, :user_id, :item_id
 
   validates :city, :road, :token, presence: true
   
