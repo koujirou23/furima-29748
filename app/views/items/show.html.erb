@@ -32,14 +32,14 @@
 
     <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
     <% if user_signed_in? && current_user.id == @item.user_id %>
-    <%= link_to '商品の編集', edit_item_path, method: :get, class: "item-red-btn" %>
-    <p class='or-text'>or</p>
-    <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %>
-    <% end %>
+      <%= link_to '商品の編集', edit_item_path, method: :get, class: "item-red-btn" %>
+      <p class='or-text'>or</p>
+      <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %>
+    <% end %> 
     <%# 商品が売れていない場合はこちらを表示しましょう %>
-      <% if @item.purchase.blank? || current_user.id != @item.user_id %>
-        <%= link_to '購入画面に進む', item_purchases_path(@item) ,class:"item-red-btn"%>
-      <% end %>
+    <% if @item.purchase.blank? && user_signed_in? && current_user.id != @item.user_id %>
+      <%= link_to '購入画面に進む', item_purchases_path(@item) ,class:"item-red-btn"%>
+    <% end %>
     <%# //商品が売れていない場合はこちらを表示しましょう %>
 
     <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
