@@ -2,7 +2,7 @@ class PurchasesController < ApplicationController
   def index
     @item = Item.find(params[:item_id])
     @user_purchase = UserPurchase.new
-    if  @item.purchase.present? || user_signed_in? && current_user.id == @item.user_id
+    if  @item.purchase.present? || user_signed_in? && current_user.id == @item.user_id || user_signed_out? 
       redirect_to root_path
     end
   end
