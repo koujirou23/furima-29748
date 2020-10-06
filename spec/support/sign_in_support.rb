@@ -7,10 +7,10 @@ module SignInSupport
     # ログインページへ移動する
     visit new_user_session_path
     # ユーザー情報を入力する
-    fill_in 'email',  with: user.email
+    fill_in 'email', with: user.email
     fill_in 'password', with: user.password
     # ログインボタンをクリックする
-    click_on("ログイン")
+    click_on('ログイン')
     # トップページへ遷移することを確認する
     expect(current_path).to eq root_path
     # サインアップページへ遷移するボタンや、ログインページへ遷移するボタンが表示されていないことを確認する

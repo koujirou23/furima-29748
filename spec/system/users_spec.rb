@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe "ユーザー新規登録", type: :system do
+RSpec.describe 'ユーザー新規登録', type: :system do
   before do
     @user = FactoryBot.build(:user)
   end
-  context 'ユーザー新規登録ができるとき' do 
+  context 'ユーザー新規登録ができるとき' do
     it '正しい情報を入力すればユーザー新規登録ができてトップページに移動する' do
       # トップページに移動する
       visit root_path
@@ -13,8 +13,8 @@ RSpec.describe "ユーザー新規登録", type: :system do
       # 新規登録ページへ移動する
       visit new_user_registration_path
       # ユーザー情報を入力する
-      fill_in 'nickname',with:  @user.nickname
-      fill_in 'email',  with: @user.email
+      fill_in 'nickname', with: @user.nickname
+      fill_in 'email', with: @user.email
       fill_in 'password', with: @user.password
       fill_in 'password-confirmation', with: @user.password_confirmation
       fill_in 'last-name',  with: @user.last_name
@@ -25,9 +25,9 @@ RSpec.describe "ユーザー新規登録", type: :system do
       select '1', from: 'user_birthday_2i'
       select '1', from: 'user_birthday_3i'
       # サインアップボタンを押すとユーザーモデルのカウントが1上がることを確認する
-      expect{
+      expect do
         find('input[name="commit"]').click
-      }.to change { User.count }.by(1)
+      end.to change { User.count }.by(1)
       # トップページへ遷移することを確認する
       expect(current_path).to eq root_path
       # サインアップページへ遷移するボタンや、ログインページへ遷移するボタンが表示されていないことを確認する
@@ -44,14 +44,14 @@ RSpec.describe "ユーザー新規登録", type: :system do
       # 新規登録ページへ移動する
       visit new_user_registration_path
       # ユーザー情報を入力する
-      fill_in 'nickname',with:  ""
-      fill_in 'email',  with:   ""
-      fill_in 'password', with: ""
-      fill_in 'password-confirmation', with: ""
-      fill_in 'last-name',  with: ""
-      fill_in 'first-name', with: ""
-      fill_in 'last-name-kana',  with: ""
-      fill_in 'first-name-kana', with: ""
+      fill_in 'nickname', with: ''
+      fill_in 'email', with: ''
+      fill_in 'password', with: ''
+      fill_in 'password-confirmation', with: ''
+      fill_in 'last-name',  with: ''
+      fill_in 'first-name', with: ''
+      fill_in 'last-name-kana',  with: ''
+      fill_in 'first-name-kana', with: ''
       select '--', from: 'user_birthday_1i'
       select '--', from: 'user_birthday_2i'
       select '--', from: 'user_birthday_3i'
@@ -61,11 +61,11 @@ RSpec.describe "ユーザー新規登録", type: :system do
   end
 end
 
-RSpec.describe "ログイン", type: :system do
+RSpec.describe 'ログイン', type: :system do
   before do
     @user = FactoryBot.build(:user)
   end
-  context 'ログインができるとき' do 
+  context 'ログインができるとき' do
     it '正しい情報を入力すればログインができてトップページに移動する' do
       # 予め、ユーザーをDBに保存する
       @user = FactoryBot.create(:user)
@@ -76,10 +76,10 @@ RSpec.describe "ログイン", type: :system do
       # ログインページへ移動する
       visit new_user_session_path
       # ユーザー情報を入力する
-      fill_in 'email',  with: @user.email
+      fill_in 'email', with: @user.email
       fill_in 'password', with: @user.password
       # ログインボタンをクリックする
-      click_on("ログイン")
+      click_on('ログイン')
       # トップページへ遷移することを確認する
       expect(current_path).to eq root_path
       # サインアップページへ遷移するボタンや、ログインページへ遷移するボタンが表示されていないことを確認する
@@ -98,10 +98,10 @@ RSpec.describe "ログイン", type: :system do
       # 新規登録ページへ移動する
       visit new_user_session_path
       # ユーザー情報を入力する
-      fill_in 'email',  with:   ""
-      fill_in 'password', with: ""
+      fill_in 'email', with: ''
+      fill_in 'password', with: ''
       # ログインボタンをクリックする
-      click_on("ログイン")
+      click_on('ログイン')
       # ログインページへ遷移することを確認する
       expect(current_path).to eq new_user_session_path
     end
