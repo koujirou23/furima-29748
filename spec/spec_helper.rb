@@ -91,4 +91,7 @@ RSpec.configure do |config|
   #   # test failures related to randomization by passing the same `--seed` value
   #   # as the one that triggered the failure.
   #   Kernel.srand config.seed
+  ENV['RAILS_ENV'] ||= 'test'
+  require File.expand_path('../config/environment', __dir__)
+  Capybara.javascript_driver = :selenium_chrome_headless
 end
