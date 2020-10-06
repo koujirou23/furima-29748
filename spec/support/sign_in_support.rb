@@ -1,7 +1,5 @@
 module SignInSupport
   def sign_in(user)
-    # 予め、ユーザーをDBに保存する
-    @user = FactoryBot.create(:user)
     # トップページに移動する
     visit root_path
     # トップページにログインページへ遷移するボタンがあることを確認する
@@ -9,8 +7,8 @@ module SignInSupport
     # ログインページへ移動する
     visit new_user_session_path
     # ユーザー情報を入力する
-    fill_in 'email',  with: @user.email
-    fill_in 'password', with: @user.password
+    fill_in 'email',  with: user.email
+    fill_in 'password', with: user.password
     # ログインボタンをクリックする
     click_on("ログイン")
     # トップページへ遷移することを確認する
